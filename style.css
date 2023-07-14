@@ -4,11 +4,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-decoration: none;
 }
 
 :root {
   -black: #000000;
   --blue: #0062b2;
+  --blue-light: #00a4e6  ;
   --blueViolet: #8a2be2;
   --blueViolet-light: #dabdf7;
   --braun:#713d45;
@@ -35,16 +37,91 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: solid;
+  background: linear-gradient(var(--blue-light),var(--blue-light));
 }
 .form{
   width: 375px;
-  height: 600px;
-  background-color: var(--blue);
+  height: 500px;
+  background:linear-gradient(var(--blue-light),var(--blue)) ;
+  box-shadow: 5px 5px 25px rgba(0,0,0,0.4);
+  border: 2px solid var(--grey-light-super);
+  border-radius: 10px;
   color: var(--white);
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   padding: 16px;
+}
+.form input{
+  
+  height: 40px;
+  background-color: transparent;
+  color: var(--white);
+  border: 0;
+  outline: 0;
+ border-bottom: 1px solid var(--white);
+ font-size: 1.2rem;
+ padding: 0 16px;
+}
+.form input[type='text'],.form input[type='password']{
+  width: 100%;
+}
+.form input::placeholder{
+  color: var(--grey-light-super);
+}
+.form input[type="submit"]{
+  border-radius:5px;
+  background-color: var(--blue);
+  border:1px solid var(--white);
+  cursor: pointer;
+}
+.container{
+  width: 100%;
+  display: flex;
+  flex-direction:column ;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper-container {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 1px solid var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+svg{
+  width: 40px;
+  height: 40px;
+}
+.wrapper-container path{
+  fill:var(--white)
+}
+.container h1{
+  font-weight: 400;
+}
+.form .wrapper{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+}
+.wrapper-check{
+  display: flex;
+  align-items: center;
+}
+.wrapper-check label{
+  cursor: pointer;
+}
+.wrapper-account{
+  display: flex;
+}
+.wrapper-account p{
+  margin-right: 5px;
+}
+a{
+  color: var(--white);
 }
