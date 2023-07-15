@@ -125,3 +125,7 @@ svg{
 a{
   color: var(--white);
 }
+.error{
+  color: var(--red);
+  background-color: var(--grey-light-super);
+}

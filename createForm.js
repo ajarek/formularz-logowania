@@ -1,14 +1,37 @@
-import {createLogo} from './logo'
+import { createLogo } from './logo'
+
 export function createForm() {
-  
   const Form = document.createElement('form')
-  
+
   Form.addEventListener('submit', (e) => {
     e.preventDefault()
-    console.log(e.target[0].value, e.target[1].value,e.target[2].checked)
-    e.target[0].value = ''
-    e.target[1].value = ''
+
+    const errorMessage = document.getElementById('errorMessage')
+    const errorMessage1 = document.getElementById('errorMessage1')
+
+    if (e.target[0].value.length < 5) {
+      e.preventDefault()
+      errorMessage1.textContent = 'Name should be at least 5 characters long.'
+    }
+    if (e.target[0].value.length >= 5) {
+      errorMessage1.textContent = ''
+    }
+    if (e.target[1].value.length < 6) {
+      e.preventDefault()
+      errorMessage.textContent =
+        'Password should be at least 6 characters long.'
+    }
+    if (e.target[1].value.length >= 6) {
+      errorMessage.textContent = ''
+    }
+    if (e.target[1].value.length >= 6 && e.target[0].value.length >= 5) {
+      e.preventDefault()
+      console.log(e.target[0].value, e.target[1].value, e.target[2].checked)
+      e.target[0].value = ''
+      e.target[1].value = ''
+    }
   })
+
   Form.method = 'POST'
   Form.classList.add('form')
   Form.appendChild(createLogo())
@@ -16,35 +39,38 @@ export function createForm() {
   Input1.type = 'text'
   Input1.name = 'user'
   Input1.placeholder = '👤Username'
-  Input1.required=true
-  const Error=document.createElement('p')
-  Error.innerText='name is required'
-  Form.append(Input1)
+  const error1 = document.createElement('div')
+  error1.id = 'errorMessage1'
+  error1.classList.add('error')
+
+  Form.append(Input1, error1)
 
   const Input2 = document.createElement('input')
   Input2.type = 'password'
   Input2.name = 'pass'
   Input2.placeholder = '🔒Password'
-  Input2.required=true
-  Form.appendChild(Input2)
-  
-  const Wrapper=document.createElement('div')
+  const error = document.createElement('div')
+  error.id = 'errorMessage'
+  error.classList.add('error')
+  Form.append(Input2, error)
+
+  const Wrapper = document.createElement('div')
   Wrapper.classList.add('wrapper')
-  const WrapperCheck=document.createElement('div')
+  const WrapperCheck = document.createElement('div')
   WrapperCheck.classList.add('wrapper-check')
-  const Label=document.createElement('label')
-  Label.innerText='Remember me'
-  Label.setAttribute('for','check')
-  const InputCheck=document.createElement('input')
-  InputCheck.type=('checkbox')
-  InputCheck.id='check'
-  WrapperCheck.append(InputCheck,Label)
-  const WrapperForgot=document.createElement('div')
-  const Forgot=document.createElement('a')
-  Forgot.setAttribute('href','#')
-  Forgot.innerText='Forgot password ?'
+  const Label = document.createElement('label')
+  Label.innerText = 'Remember me'
+  Label.setAttribute('for', 'check')
+  const InputCheck = document.createElement('input')
+  InputCheck.type = 'checkbox'
+  InputCheck.id = 'check'
+  WrapperCheck.append(InputCheck, Label)
+  const WrapperForgot = document.createElement('div')
+  const Forgot = document.createElement('a')
+  Forgot.setAttribute('href', '#')
+  Forgot.innerText = 'Forgot password ?'
   WrapperForgot.appendChild(Forgot)
-  Wrapper.append(WrapperCheck,WrapperForgot)
+  Wrapper.append(WrapperCheck, WrapperForgot)
   Form.appendChild(Wrapper)
 
   const Input3 = document.createElement('input')
@@ -52,10 +78,10 @@ export function createForm() {
   Input3.name = 'submit'
   Input3.value = 'Login'
   Form.appendChild(Input3)
-  
-  const WrapperAccount=document.createElement('div')
+
+  const WrapperAccount = document.createElement('div')
   WrapperAccount.classList.add('wrapper-account')
-  WrapperAccount.innerHTML=`
+  WrapperAccount.innerHTML = `
   <p>Don't have an account?</p>
   <a href='#'>Register now</a>
   `
