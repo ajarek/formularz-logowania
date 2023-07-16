@@ -28,7 +28,7 @@ export function createForm() {
     if (e.target[1].value.length >= 6 && e.target[0].value.length >= 5) {
       e.preventDefault()
       modal.style.display='flex'
-      modal.innerHTML=` Name: ${e.target[0].value}<br/> Password: ${e.target[1].value}<br/> Remember: ${e.target[2].checked} <br/> ❌`
+      modal.innerHTML=`Logged😀 <br/> Name: ${e.target[0].value}<br/> Password: ${e.target[1].value}<br/> Remember: ${e.target[2].checked} <br/> ❌`
       modal.addEventListener('click',()=>modal.style.display='none')
       e.target[0].value = ''
       e.target[1].value = ''
