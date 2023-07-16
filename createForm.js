@@ -8,7 +8,7 @@ export function createForm() {
 
     const errorMessage = document.getElementById('errorMessage')
     const errorMessage1 = document.getElementById('errorMessage1')
-    const modal =document.querySelector('.modal')
+    const modal = document.querySelector('.modal')
 
     if (e.target[0].value.length < 5) {
       e.preventDefault()
@@ -27,17 +27,17 @@ export function createForm() {
     }
     if (e.target[1].value.length >= 6 && e.target[0].value.length >= 5) {
       e.preventDefault()
-      modal.style.display='flex'
-      modal.innerHTML=`Logged😀 <br/> Name: ${e.target[0].value}<br/> Password: ${e.target[1].value}<br/> Remember: ${e.target[2].checked} <br/> ❌`
-      modal.addEventListener('click',()=>modal.style.display='none')
+      modal.style.display = 'flex'
+      modal.innerHTML = `Logged😀 <br/> Name: ${e.target[0].value}<br/> Password: ${e.target[1].value}<br/> Remember: ${e.target[2].checked} <br/> ❌`
+      modal.addEventListener('click', () => (modal.style.display = 'none'))
       e.target[0].value = ''
       e.target[1].value = ''
     }
   })
-  
+
   Form.method = 'POST'
   Form.classList.add('form')
-  const Modal=document.createElement('div')
+  const Modal = document.createElement('div')
   Modal.classList.add('modal')
   Form.append(Modal, createLogo())
   const Input1 = document.createElement('input')
